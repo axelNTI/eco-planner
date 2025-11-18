@@ -1,0 +1,23 @@
+﻿name: Check Webpage Status
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+
+env:
+  COMMA_SEPARATED_URLS: ${{ secrets.COMMA_SEPARATED_URLS }}
+  COMMA_SEPERATED_EMAILS: ${{ secrets.COMMA_SEPERATED_EMAILS }}
+
+jobs:
+  check-webpage-status:
+    runs-on: ubuntu-latest
+
+    # Check all urls in COMMA_SEPARATED_URLS. If a single one doesn't return a 200 status code, notify all emails in COMMA_SEPERATED_EMAILS.
+    steps:
+      - name: Check webpage status
+        # Loop through all URLs, fail if any return non-200 status
+
+      - name: Notify on failure
+        if: failure()
+        # Send email notifications to all emails in COMMA_SEPERATED_EMAILS
